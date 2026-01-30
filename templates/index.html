@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rana Bot Pro</title>
+    <style>
+        body{
+            background:#0f172a;
+            color:white;
+            font-family:Arial, Helvetica, sans-serif;
+            text-align:center;
+            padding-top:60px;
+        }
+        .box{
+            background:#1e293b;
+            width:320px;
+            margin:auto;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 0 15px rgba(0,0,0,0.5);
+        }
+        h1{
+            color:#38bdf8;
+        }
+        button{
+            padding:12px 25px;
+            border:none;
+            border-radius:8px;
+            font-size:18px;
+            margin-top:20px;
+            cursor:pointer;
+        }
+        .up{background:#16a34a;color:white;}
+        .down{background:#dc2626;color:white;}
+        .result{
+            margin-top:20px;
+            font-size:22px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h1>Rana Bot Pro</h1>
+        <p>Live Trading Signal</p>
+
+        <button class="up" onclick="getSignal()">Get Signal</button>
+
+        <div class="result" id="signal"></div>
+    </div>
+
+<script>
+function getSignal(){
+    fetch('/signal')
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("signal").innerHTML = data.signal;
+    });
+}
+</script>
+
+</body>
+</html>
